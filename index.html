@@ -18,11 +18,16 @@
         }
 
         /* Navigation */
+        .navbar {
+            background: #0f1116;
+            width: 100%;
+        }
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 2rem;
+            padding: 1.25rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
             width: 100%;
@@ -37,14 +42,14 @@
         .logo-teal { color: #1DB584; }
 
         nav a {
-            color: #666;
+            color: #1DB584;
             text-decoration: none;
             margin-left: 2.5rem;
             font-size: 0.95rem;
             transition: color 0.2s;
         }
 
-        nav a:hover { color: #1DB584; }
+        nav a:hover { color: #fff; }
 
         /* Hero Section */
         .hero {
@@ -441,7 +446,7 @@
 
             nav {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 0.75rem;
                 text-align: center;
                 padding: 1rem;
             }
@@ -473,17 +478,19 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
-        <div class="logo">
-            <span class="logo-teal">ALL LEGS</span>
-        </div>
-        <div>
-            <a href="#features">Features</a>
-            <a href="#games">Game Types</a>
-            <a href="#download">Download</a>
-            <a href="mailto:contact@alllegs.app">Contact</a>
-        </div>
-    </nav>
+    <header class="navbar">
+        <nav>
+            <div class="logo">
+                <span class="logo-teal">ALL LEGS</span>
+            </div>
+            <div>
+                <a href="#features">Features</a>
+                <a href="#games">Game Types</a>
+                <a href="#download">Download</a>
+                <a href="mailto:contact@alllegs.app">Contact</a>
+            </div>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">

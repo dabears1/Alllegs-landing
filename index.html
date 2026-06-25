@@ -245,9 +245,35 @@
         /* Showcase Grid */
         .showcase {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem 2rem;
             justify-items: center;
+        }
+
+        .showcase-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .showcase-item p {
+            font-size: 0.95rem;
+            color: #555;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        @media (max-width: 900px) {
+            .showcase {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .showcase {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* Download Section */
@@ -485,22 +511,58 @@
         <h2 class="section-title">See It In <span class="teal">Action</span></h2>
         
         <div class="showcase">
-            <div class="iphone-frame">
-                <div class="iphone-screen">
-                    <img class="screen-img" src="images/Pictures for pitch deck/Public Feed.PNG" alt="Public feed showing live bets">
+            <div class="showcase-item">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/Leagues Page.PNG" alt="Leagues page">
+                    </div>
                 </div>
+                <p>Your leagues, one tap away</p>
             </div>
 
-            <div class="iphone-frame">
-                <div class="iphone-screen">
-                    <img class="screen-img" src="images/Pictures for pitch deck/Creating a Single bet, adding custom odds .PNG" alt="Creating a bet with custom odds">
+            <div class="showcase-item">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/world cup bet, showing 2 legs of a 4 leg parlay.PNG" alt="Multi-leg parlay">
+                    </div>
                 </div>
+                <p>Build multi-leg parlays</p>
             </div>
 
-            <div class="iphone-frame">
-                <div class="iphone-screen">
-                    <img class="screen-img" src="images/Pictures for pitch deck/trophy ceremony once a season is over.PNG" alt="Trophy ceremony at end of season">
+            <div class="showcase-item">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/trophy ceremony once a season is over.PNG" alt="Trophy ceremony">
+                    </div>
                 </div>
+                <p>Crown a season champion</p>
+            </div>
+
+            <div class="showcase-item">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/Creating a Single bet, adding custom odds .PNG" alt="Custom odds">
+                    </div>
+                </div>
+                <p>Custom odds per bet</p>
+            </div>
+
+            <div class="showcase-item">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/feed from within a league showing 2 bets.PNG" alt="League feed">
+                    </div>
+                </div>
+                <p>Live league feed</p>
+            </div>
+
+            <div class="showcase-item">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/Profile Page w: Badges.PNG" alt="Profile and badges">
+                    </div>
+                </div>
+                <p>Badges &amp; stats</p>
             </div>
         </div>
     </section>

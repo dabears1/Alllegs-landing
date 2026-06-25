@@ -35,18 +35,16 @@
         }
 
         .logo-teal { color: #1DB584; }
-        .logo-pink { color: #1DB584; }
 
         nav a {
             color: #666;
             text-decoration: none;
             margin-left: 2.5rem;
             font-size: 0.95rem;
+            transition: color 0.2s;
         }
 
-        nav a:hover {
-            color: #1DB584;
-        }
+        nav a:hover { color: #1DB584; }
 
         /* Hero Section */
         .hero {
@@ -59,6 +57,10 @@
             padding: 3rem 2rem;
         }
 
+        .hero-content {
+            animation: fadeUp 0.7s ease-out 0.15s both;
+        }
+
         .hero-content h1 {
             font-size: 3rem;
             line-height: 1.2;
@@ -67,7 +69,6 @@
         }
 
         .hero-content h1 .teal { color: #1DB584; }
-        .hero-content h1 .pink { color: #1DB584; }
 
         .hero-content p {
             font-size: 1.1rem;
@@ -100,9 +101,7 @@
             color: #fff;
         }
 
-        .btn-primary:hover {
-            background: #15a570;
-        }
+        .btn-primary:hover { background: #15a570; }
 
         .btn-secondary {
             background: transparent;
@@ -110,14 +109,37 @@
             color: #1DB584;
         }
 
-        .btn-secondary:hover {
-            background: rgba(29, 181, 132, 0.05);
-        }
+        .btn-secondary:hover { background: rgba(29, 181, 132, 0.05); }
 
         .disclaimer {
             font-size: 0.85rem;
             color: #999;
             margin-top: 1rem;
+        }
+
+        /* Hero phone with circle */
+        .hero-phone-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-circle {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: #1DB584;
+            opacity: 0.18;
+            z-index: 0;
+            animation: circlePopIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
+        }
+
+        .hero-phone-wrap .iphone-frame {
+            position: relative;
+            z-index: 1;
+            animation: float 5s ease-in-out 1s infinite;
         }
 
         /* iPhone Frame */
@@ -264,18 +286,6 @@
             font-weight: 500;
         }
 
-        @media (max-width: 900px) {
-            .showcase {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 600px) {
-            .showcase {
-                grid-template-columns: 1fr;
-            }
-        }
-
         /* Download Section */
         .download-section {
             background: #e8e2d9;
@@ -291,9 +301,9 @@
             color: #000;
         }
 
-        .download-section p {
+        .download-section > p {
             color: #666;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .download-buttons {
@@ -301,33 +311,70 @@
             gap: 1rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-bottom: 1rem;
         }
 
-        .download-btn {
-            background: #1DB584;
+        /* Store badges */
+        .store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: #000;
             color: #fff;
-            padding: 0.95rem 2rem;
-            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
             border: none;
             cursor: pointer;
-            font-size: 1rem;
             transition: all 0.3s;
+            min-width: 180px;
         }
 
-        .download-btn:hover {
-            background: #15a570;
+        .store-btn:hover { background: #222; transform: translateY(-2px); }
+
+        .store-btn .store-icon {
+            font-size: 1.6rem;
+            line-height: 1;
         }
 
-        .download-btn.secondary {
+        .store-btn .store-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .store-btn .store-sub {
+            font-size: 0.65rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .store-btn .store-name {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .store-btn.coming-soon {
+            opacity: 0.6;
+            cursor: default;
+        }
+
+        .store-btn.coming-soon:hover {
+            transform: none;
+            background: #000;
+        }
+
+        .store-btn.contact-btn {
             background: transparent;
             border: 2px solid #1DB584;
             color: #1DB584;
         }
 
-        .download-btn.secondary:hover {
-            background: rgba(29, 181, 132, 0.05);
+        .store-btn.contact-btn:hover {
+            background: rgba(29, 181, 132, 0.07);
+            transform: translateY(-2px);
         }
 
         /* Footer */
@@ -345,7 +392,39 @@
             text-decoration: none;
         }
 
+        /* ── Animations ── */
+        @keyframes circlePopIn {
+            from { transform: scale(0); opacity: 0; }
+            to   { transform: scale(1); opacity: 0.18; }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50%       { transform: translateY(-14px); }
+        }
+
+        /* Scroll-triggered fade-up */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Responsive */
+        @media (max-width: 900px) {
+            .showcase { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 768px) {
             .hero {
                 grid-template-columns: 1fr;
@@ -353,8 +432,11 @@
                 padding: 2rem 1rem;
             }
 
-            .hero-content h1 {
-                font-size: 2rem;
+            .hero-content h1 { font-size: 2rem; }
+
+            .hero-circle {
+                width: 340px;
+                height: 340px;
             }
 
             nav {
@@ -364,38 +446,28 @@
                 padding: 1rem;
             }
 
-            nav a {
-                margin-left: 0;
-            }
+            nav a { margin-left: 0; }
 
-            .section {
-                padding: 2rem 1rem;
-            }
+            .section { padding: 2rem 1rem; }
 
-            .section-title {
-                font-size: 1.6rem;
-            }
+            .section-title { font-size: 1.6rem; }
 
-            .cta-group {
-                flex-direction: column;
-            }
+            .cta-group { flex-direction: column; }
 
-            .cta-group .btn {
-                width: 100%;
-            }
+            .cta-group .btn { width: 100%; }
 
-            .download-buttons {
-                flex-direction: column;
-            }
+            .download-buttons { flex-direction: column; align-items: center; }
 
-            .download-btn {
-                width: 100%;
-            }
+            .store-btn { width: 100%; max-width: 260px; }
 
             .iphone-frame {
                 width: 260px;
                 height: 520px;
             }
+        }
+
+        @media (max-width: 600px) {
+            .showcase { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -403,12 +475,13 @@
     <!-- Navigation -->
     <nav>
         <div class="logo">
-            <span class="logo-teal">ALL</span><span class="logo-pink">LEGS</span>
+            <span class="logo-teal">ALL LEGS</span>
         </div>
         <div>
             <a href="#features">Features</a>
             <a href="#games">Game Types</a>
             <a href="#download">Download</a>
+            <a href="mailto:contact@alllegs.app">Contact</a>
         </div>
     </nav>
 
@@ -417,7 +490,7 @@
         <div class="hero-content">
             <h1><span class="teal">Fantasy League</span> Betting</h1>
             <p>Create private leagues with friends. Make bets on sports you love. Compete for prizes and bragging rights.</p>
-            
+
             <div class="cta-group">
                 <a href="#download" class="btn btn-primary">Get Started</a>
                 <a href="https://testflight.apple.com" class="btn btn-secondary">Join Beta</a>
@@ -426,7 +499,8 @@
             <p class="disclaimer">Entertainment only • Ages 18+ • Not real money gambling</p>
         </div>
 
-        <div>
+        <div class="hero-phone-wrap">
+            <div class="hero-circle"></div>
             <div class="iphone-frame">
                 <div class="iphone-screen">
                     <img class="screen-img" src="images/Pictures for pitch deck/landing page screen, carosel of mock bets.PNG" alt="All Legs app home screen">
@@ -437,36 +511,31 @@
 
     <!-- Features Section -->
     <section id="features" class="section">
-        <h2 class="section-title">Why <span class="teal">All Legs</span></h2>
-        
+        <h2 class="section-title fade-up">Why <span class="teal">All Legs</span></h2>
+
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card fade-up" style="transition-delay: 0.05s">
                 <h3>Create Custom Leagues</h3>
                 <p>Set your own rules, scoring, and prize structures with friends.</p>
             </div>
-
-            <div class="feature-card">
+            <div class="feature-card fade-up" style="transition-delay: 0.1s">
                 <h3>Multi-Sport Betting</h3>
                 <p>Pick from football, World Cup, boxing, baseball, and more.</p>
             </div>
-
-            <div class="feature-card">
+            <div class="feature-card fade-up" style="transition-delay: 0.15s">
                 <h3>Build Parlays</h3>
                 <p>Chain multiple bets together and multiply your winnings.</p>
             </div>
-
-            <div class="feature-card">
+            <div class="feature-card fade-up" style="transition-delay: 0.2s">
                 <h3>Social Features</h3>
                 <p>Chat with friends, remix public bets, and track leaderboards.</p>
             </div>
-
-            <div class="feature-card">
+            <div class="feature-card fade-up" style="transition-delay: 0.25s">
                 <h3>Custom Odds</h3>
                 <p>Set your own odds for any bet or game type.</p>
             </div>
-
-            <div class="feature-card">
-                <h3>Badges & Rewards</h3>
+            <div class="feature-card fade-up" style="transition-delay: 0.3s">
+                <h3>Badges &amp; Rewards</h3>
                 <p>Earn achievements and compete on global leaderboards.</p>
             </div>
         </div>
@@ -474,19 +543,18 @@
 
     <!-- Game Types Section -->
     <section id="games" class="section">
-        <h2 class="section-title">Game <span class="teal">Types</span></h2>
-        
+        <h2 class="section-title fade-up">Game <span class="teal">Types</span></h2>
+
         <div class="game-types">
-            <div class="game-card">
+            <div class="game-card fade-up" style="transition-delay: 0.05s">
                 <h3>Single Bets</h3>
                 <ul>
                     <li>Pick one game outcome</li>
-                    <li>Custom odds & stakes</li>
+                    <li>Custom odds &amp; stakes</li>
                     <li>Flexible rules</li>
                 </ul>
             </div>
-
-            <div class="game-card">
+            <div class="game-card fade-up" style="transition-delay: 0.1s">
                 <h3>Parlays</h3>
                 <ul>
                     <li>Chain multiple bets</li>
@@ -494,8 +562,7 @@
                     <li>High reward potential</li>
                 </ul>
             </div>
-
-            <div class="game-card">
+            <div class="game-card fade-up" style="transition-delay: 0.15s">
                 <h3>Seasons</h3>
                 <ul>
                     <li>Full league seasons</li>
@@ -508,10 +575,10 @@
 
     <!-- Showcase Section -->
     <section class="section">
-        <h2 class="section-title">See It In <span class="teal">Action</span></h2>
-        
+        <h2 class="section-title fade-up">See It In <span class="teal">Action</span></h2>
+
         <div class="showcase">
-            <div class="showcase-item">
+            <div class="showcase-item fade-up" style="transition-delay: 0.05s">
                 <div class="iphone-frame">
                     <div class="iphone-screen">
                         <img class="screen-img" src="images/Pictures for pitch deck/Leagues Page.PNG" alt="Leagues page">
@@ -519,8 +586,7 @@
                 </div>
                 <p>Your leagues, one tap away</p>
             </div>
-
-            <div class="showcase-item">
+            <div class="showcase-item fade-up" style="transition-delay: 0.1s">
                 <div class="iphone-frame">
                     <div class="iphone-screen">
                         <img class="screen-img" src="images/Pictures for pitch deck/world cup bet, showing 2 legs of a 4 leg parlay.PNG" alt="Multi-leg parlay">
@@ -528,8 +594,7 @@
                 </div>
                 <p>Build multi-leg parlays</p>
             </div>
-
-            <div class="showcase-item">
+            <div class="showcase-item fade-up" style="transition-delay: 0.15s">
                 <div class="iphone-frame">
                     <div class="iphone-screen">
                         <img class="screen-img" src="images/Pictures for pitch deck/trophy ceremony once a season is over.PNG" alt="Trophy ceremony">
@@ -537,8 +602,7 @@
                 </div>
                 <p>Crown a season champion</p>
             </div>
-
-            <div class="showcase-item">
+            <div class="showcase-item fade-up" style="transition-delay: 0.2s">
                 <div class="iphone-frame">
                     <div class="iphone-screen">
                         <img class="screen-img" src="images/Pictures for pitch deck/Creating a Single bet, adding custom odds .PNG" alt="Custom odds">
@@ -546,8 +610,7 @@
                 </div>
                 <p>Custom odds per bet</p>
             </div>
-
-            <div class="showcase-item">
+            <div class="showcase-item fade-up" style="transition-delay: 0.25s">
                 <div class="iphone-frame">
                     <div class="iphone-screen">
                         <img class="screen-img" src="images/Pictures for pitch deck/feed from within a league showing 2 bets.PNG" alt="League feed">
@@ -555,8 +618,7 @@
                 </div>
                 <p>Live league feed</p>
             </div>
-
-            <div class="showcase-item">
+            <div class="showcase-item fade-up" style="transition-delay: 0.3s">
                 <div class="iphone-frame">
                     <div class="iphone-screen">
                         <img class="screen-img" src="images/Pictures for pitch deck/Profile Page w: Badges.PNG" alt="Profile and badges">
@@ -569,13 +631,34 @@
 
     <!-- Download Section -->
     <section id="download" class="section">
-        <div class="download-section">
+        <div class="download-section fade-up">
             <h2>Ready to Play?</h2>
             <p>Download All Legs and start competing with friends today.</p>
-            
+
             <div class="download-buttons">
-                <button class="download-btn">App Store (Coming Soon)</button>
-                <a href="https://testflight.apple.com" class="download-btn secondary">TestFlight Beta</a>
+                <span class="store-btn coming-soon">
+                    <span class="store-icon"></span>
+                    <span class="store-text">
+                        <span class="store-sub">Coming Soon on the</span>
+                        <span class="store-name">App Store</span>
+                    </span>
+                </span>
+
+                <a href="https://testflight.apple.com" class="store-btn">
+                    <span class="store-icon">&#9992;</span>
+                    <span class="store-text">
+                        <span class="store-sub">Join the</span>
+                        <span class="store-name">TestFlight Beta</span>
+                    </span>
+                </a>
+
+                <a href="mailto:contact@alllegs.app" class="store-btn contact-btn">
+                    <span class="store-icon">&#9993;</span>
+                    <span class="store-text">
+                        <span class="store-sub">Get in touch</span>
+                        <span class="store-name">Contact Us</span>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
@@ -583,8 +666,22 @@
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 All Legs. All rights reserved.</p>
-        <p><a href="#">Privacy</a> • <a href="#">Terms</a></p>
-        <p style="margin-top: 1rem;">Entertainment only • Ages 18+ • Not real money gambling</p>
+        <p><a href="#">Privacy</a> &bull; <a href="#">Terms</a></p>
+        <p style="margin-top: 1rem;">Entertainment only &bull; Ages 18+ &bull; Not real money gambling</p>
     </footer>
+
+    <script>
+        // Scroll-triggered fade-up
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

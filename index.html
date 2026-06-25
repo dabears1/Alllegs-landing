@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Legs - Fantasy League Betting</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #fff;
+            color: #333;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-teal { color: #1DB584; }
+        .logo-pink { color: #FF1493; }
+
+        nav a {
+            color: #666;
+            text-decoration: none;
+            margin-left: 2.5rem;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: #1DB584;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            background: #fff;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: #000;
+        }
+
+        .hero-content h1 .teal { color: #1DB584; }
+        .hero-content h1 .pink { color: #FF1493; }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 0.95rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #1DB584;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #15a570;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid #1DB584;
+            color: #1DB584;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(29, 181, 132, 0.05);
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 1rem;
+        }
+
+        /* iPhone Frame */
+        .iphone-frame {
+            width: 300px;
+            height: 600px;
+            border-radius: 50px;
+            background: #000;
+            padding: 10px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), inset 0 0 0 6px #1a1a1a;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .iphone-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 25px;
+            background: #000;
+            border-radius: 0 0 35px 35px;
+            z-index: 10;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 45px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0f2942, #1a3a52);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .screen-placeholder {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            color: #000;
+        }
+
+        .section-title .teal { color: #1DB584; }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            background: #f9f9f9;
+            text-align: center;
+        }
+
+        .feature-card h3 {
+            color: #1DB584;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Game Types */
+        .game-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .game-card {
+            border: 1px solid #e0e0e0;
+            padding: 2rem;
+            border-radius: 12px;
+            background: #f9f9f9;
+        }
+
+        .game-card h3 {
+            color: #1DB584;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .game-card ul {
+            list-style: none;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .game-card li {
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+        }
+
+        .game-card li::before {
+            content: '✓ ';
+            color: #1DB584;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Showcase Grid */
+        .showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+        }
+
+        /* Download Section */
+        .download-section {
+            background: #f5f5f5;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .download-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #000;
+        }
+
+        .download-section p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            background: #1DB584;
+            color: #fff;
+            padding: 0.95rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #15a570;
+        }
+
+        .download-btn.secondary {
+            background: transparent;
+            border: 2px solid #1DB584;
+            color: #1DB584;
+        }
+
+        .download-btn.secondary:hover {
+            background: rgba(29, 181, 132, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #e0e0e0;
+            padding: 2.5rem;
+            text-align: center;
+            color: #999;
+            background: #f9f9f9;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #1DB584;
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 1rem;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .cta-group .btn {
+                width: 100%;
+            }
+
+            .download-buttons {
+                flex-direction: column;
+            }
+
+            .download-btn {
+                width: 100%;
+            }
+
+            .iphone-frame {
+                width: 260px;
+                height: 520px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <span class="logo-teal">ALL</span><span class="logo-pink">LEGS</span>
+        </div>
+        <div>
+            <a href="#features">Features</a>
+            <a href="#games">Game Types</a>
+            <a href="#download">Download</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><span class="teal">Fantasy League</span> Betting</h1>
+            <p>Create private leagues with friends. Make bets on sports you love. Compete for prizes and bragging rights.</p>
+            
+            <div class="cta-group">
+                <a href="#download" class="btn btn-primary">Get Started</a>
+                <a href="https://testflight.apple.com" class="btn btn-secondary">Join Beta</a>
+            </div>
+
+            <p class="disclaimer">🎮 Entertainment only • Ages 18+ • Not real money gambling</p>
+        </div>
+
+        <div>
+            <div class="iphone-frame">
+                <div class="iphone-screen">
+                    <div class="screen-placeholder">All Legs App<br>Coming Soon</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <h2 class="section-title">Why <span class="teal">All Legs</span></h2>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>Create Custom Leagues</h3>
+                <p>Set your own rules, scoring, and prize structures with friends.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Multi-Sport Betting</h3>
+                <p>Pick from football, World Cup, boxing, baseball, and more.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Build Parlays</h3>
+                <p>Chain multiple bets together and multiply your winnings.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Social Features</h3>
+                <p>Chat with friends, remix public bets, and track leaderboards.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Custom Odds</h3>
+                <p>Set your own odds for any bet or game type.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Badges & Rewards</h3>
+                <p>Earn achievements and compete on global leaderboards.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Types Section -->
+    <section id="games" class="section">
+        <h2 class="section-title">Game <span class="teal">Types</span></h2>
+        
+        <div class="game-types">
+            <div class="game-card">
+                <h3>Single Bets</h3>
+                <ul>
+                    <li>Pick one game outcome</li>
+                    <li>Custom odds & stakes</li>
+                    <li>Flexible rules</li>
+                </ul>
+            </div>
+
+            <div class="game-card">
+                <h3>Parlays</h3>
+                <ul>
+                    <li>Chain multiple bets</li>
+                    <li>2, 3, 4+ legs</li>
+                    <li>High reward potential</li>
+                </ul>
+            </div>
+
+            <div class="game-card">
+                <h3>Seasons</h3>
+                <ul>
+                    <li>Full league seasons</li>
+                    <li>Final standings</li>
+                    <li>Trophy ceremonies</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section class="section">
+        <h2 class="section-title">See It In <span class="teal">Action</span></h2>
+        
+        <div class="showcase">
+            <div class="iphone-frame">
+                <div class="iphone-screen">
+                    <div class="screen-placeholder">Public Feed</div>
+                </div>
+            </div>
+
+            <div class="iphone-frame">
+                <div class="iphone-screen">
+                    <div class="screen-placeholder">Create Bet</div>
+                </div>
+            </div>
+
+            <div class="iphone-frame">
+                <div class="iphone-screen">
+                    <div class="screen-placeholder">Trophy View</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="section">
+        <div class="download-section">
+            <h2>Ready to Play?</h2>
+            <p>Download All Legs and start competing with friends today.</p>
+            
+            <div class="download-buttons">
+                <button class="download-btn">App Store (Coming Soon)</button>
+                <a href="https://testflight.apple.com" class="download-btn secondary">TestFlight Beta</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 All Legs. All rights reserved.</p>
+        <p><a href="#">Privacy</a> • <a href="#">Terms</a></p>
+        <p style="margin-top: 1rem;">Entertainment only • Ages 18+ • Not real money gambling</p>
+    </footer>
+</body>
+</html>

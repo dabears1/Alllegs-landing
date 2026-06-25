@@ -291,6 +291,62 @@
             font-weight: 500;
         }
 
+        /* Section subtitle */
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            max-width: 720px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Sport pills */
+        .sports-features {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .sport-pill {
+            background: #1DB584;
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            padding: 0.45rem 1.1rem;
+            border-radius: 999px;
+        }
+
+        /* Sports info grid */
+        .sports-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .sport-feature-card {
+            background: #e8e2d9;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .sport-feature-card h4 {
+            color: #1DB584;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sport-feature-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
         /* Download Section */
         .download-section {
             background: #e8e2d9;
@@ -632,6 +688,68 @@
                     </div>
                 </div>
                 <p>Badges &amp; stats</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Real Sports Section -->
+    <section class="section">
+        <h2 class="section-title fade-up">Real Sports. <span class="teal">Real Odds.</span></h2>
+        <p class="section-subtitle fade-up">Pull live odds from <strong>70+ sportsbooks</strong>, pick your favorite book, and bet on real games — all inside your private league. Currently supporting <strong>MLB, NFL, NBA, NHL, and World Cup</strong>. Scores update live, and winning bets are resolved automatically so you never have to lift a finger.</p>
+
+        <div class="sports-features fade-up">
+            <div class="sport-pill">MLB</div>
+            <div class="sport-pill">NFL</div>
+            <div class="sport-pill">NBA</div>
+            <div class="sport-pill">NHL</div>
+            <div class="sport-pill">World Cup</div>
+        </div>
+
+        <div class="showcase">
+            <div class="showcase-item fade-up" style="transition-delay: 0.05s">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/MLB parlay live scores.PNG" alt="Live MLB scores">
+                    </div>
+                </div>
+                <p>Follow live scores in real time</p>
+            </div>
+
+            <div class="showcase-item fade-up" style="transition-delay: 0.1s">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/MLB parlay wager selection.PNG" alt="MLB parlay wager">
+                    </div>
+                </div>
+                <p>Build parlays with real odds</p>
+            </div>
+
+            <div class="showcase-item fade-up" style="transition-delay: 0.15s">
+                <div class="iphone-frame">
+                    <div class="iphone-screen">
+                        <img class="screen-img" src="images/Pictures for pitch deck/sports mode (world cup games).PNG" alt="World Cup betting">
+                    </div>
+                </div>
+                <p>Choose your sportsbook, place your pick</p>
+            </div>
+        </div>
+
+        <div class="sports-info fade-up">
+            <div class="sport-feature-card">
+                <h4>70+ Sportsbooks</h4>
+                <p>Pull real odds from DraftKings, FanDuel, BetMGM, and dozens more. Pick the book you trust.</p>
+            </div>
+            <div class="sport-feature-card">
+                <h4>Single Bets &amp; Parlays</h4>
+                <p>Place a straight bet or chain up to 4+ legs into a parlay for bigger payouts.</p>
+            </div>
+            <div class="sport-feature-card">
+                <h4>Auto-Resolved</h4>
+                <p>Game ends, bets settle automatically. No manual scoring, no disputes.</p>
+            </div>
+            <div class="sport-feature-card">
+                <h4>Live Scores</h4>
+                <p>Watch the score update inside the app as the game plays out in real time.</p>
             </div>
         </div>
     </section>
